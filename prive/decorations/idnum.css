@@ -1,0 +1,271 @@
+/* COMMUN */
+body
+{
+  margin: 0;
+  background-color: #e5e5e5;
+  position: relative;
+  margin: auto;
+  min-height: 100vh;
+}
+
+.bodydetailsclient
+{
+  padding-bottom: 18vh;
+}
+
+.bodycreationclient
+{
+  padding-bottom: 18vh;
+}
+
+/* HEADER */
+.global-header
+{
+  background-color: #63859d;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  text-align: center;
+  top: 0;
+  margin-bottom: 2vh;
+}
+
+.global-header img
+{
+  margin: 2vh 2vh;
+}
+
+/* FOOTER*/
+.global-footer
+{
+  border-top: 10px solid #242a31;
+  padding: 30px 0;
+  margin-top: 2vh;
+  line-height: normal;
+  font-size: 1em;
+  width: 100vw;
+  background-color: #373d48;
+  position: absolute;
+  bottom: 0;
+}
+
+.global-footer ul
+{
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 18vw;
+  margin-top: -2vh;
+  margin-bottom: 4vh;
+}
+
+.global-footer li
+{
+  list-style: none;
+  width: 40vw;
+  height: 3vh;
+}
+
+.global-footer p
+{
+  color: #8693a6;
+  font-family: "Dosis", sans-serif;
+}
+
+.global-footer .name
+{
+ color: white;
+ font-family: "Dosis", sans-serif;
+}
+
+/* ACCUEIL */
+.boxaccueil h1
+{
+  margin-bottom: 1vh;
+}
+
+.boxaccueil
+{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.boxaccueil .barre-recherche
+{
+  letter-spacing: 1px;
+  border-color: #dddddd;
+}
+
+.boxaccueil #textrecherche
+{
+  height: 3vh;
+  width: 20vw;
+  min-width: 200px;
+  min-height: 20px;
+  margin-bottom: 2vh;
+}
+
+.boxaccueil #submitrecherche, .boxaccueil #boutoncreerclient, .boxaccueil #boutonpresse
+{
+  background-color: #63859d;
+  letter-spacing: 1px;
+  border: none;
+  padding: 5px 10px;
+  font-family: "Dosis", sans-serif;
+  text-transform: uppercase;
+  transition: background-color 1s;
+}
+
+.boxaccueil #submitrecherche:hover, .boxaccueil #boutoncreerclient:hover, .boxaccueil #boutonpresse:hover
+{
+    cursor:pointer;
+    background-color: #dd0330;
+}
+
+.boxaccueil .formclientrecherche
+{
+  width: 10vw;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  margin-left: 40vw;
+}
+
+.boxaccueil #boutonclienttrouve
+ {
+   text-align: left;
+ }
+
+/* CREATIONCLIENT */
+.boxcreationclient h1
+{
+  margin-bottom: 1vh;
+}
+
+.boxcreationclient
+{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.boxcreationclient #submitcreationclient, .boxcreationclient #boutonquittercreerclient
+{
+  background-color: #63859d;
+  letter-spacing: 1px;
+  border: none;
+  padding: 5px 10px;
+  margin-bottom: 2vh;
+  font-family: "Dosis", sans-serif;
+  text-transform: uppercase;
+  transition: background-color 1s;
+}
+
+.boxcreationclient #submitcreationclient:hover, .boxcreationclient #boutonquittercreerclient:hover
+{
+    cursor:pointer;
+    background-color: #dd0330;
+}
+
+.boxcreationclient .formcreerclient .barre
+{
+  width: 20vw;
+  height: 3vh;
+  margin-bottom: 1vh;
+}
+
+.boxcreationclient .formcreerclient .pform
+{
+  font-family: "Dosis", sans-serif;
+  margin-bottom: -1vh;
+}
+
+.boxcreationclient .formcreerclient
+{
+  margin-bottom: -5vh;
+}
+
+/* MODIFIERCLIENT */
+.boxmodifierclient
+{
+  text-align: center;
+}
+
+.boxmodifierclient #boutonEnregistrer, .boxmodifierclient #boutonquitterdetailclient
+{
+  background-color: #63859d;
+  letter-spacing: 1px;
+  border: none;
+  padding: 5px 10px;
+  font-family: "Dosis", sans-serif;
+  text-transform: uppercase;
+  transition: background-color 1s;
+}
+
+.boxmodifierclient #boutonEnregistrer:hover, .boxmodifierclient #boutonquitterdetailclient:hover
+{
+  cursor:pointer;
+  background-color: #dd0330;
+}
+
+/* DETAILSCLIENT */
+.boxdetailsclient #boutonquitterdetailclient, .boxdetailsclient #boutonmodifierclient, .boxdetailsclient #boutonenregistrer
+{
+  background-color: #63859d;
+  letter-spacing: 1px;
+  border: none;
+  padding: 5px 10px;
+  font-family: "Dosis", sans-serif;
+  text-transform: uppercase;
+  transition: background-color 1s;
+}
+
+.boxdetailsclient #boutonquitterdetailclient:hover, .boxdetailsclient #boutonmodifierclient:hover, .boxdetailsclient #boutonenregistrer:hover
+{
+  cursor:pointer;
+  background-color: #dd0330;
+}
+
+.boxdetailsclient
+{
+  text-align: center;
+}
+
+.boxdetailsclient .divdetailsduclient
+{
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  width: 80vw;
+  margin-left: 10vw;
+  margin-bottom: 1vh;
+}
+
+.boxdetailsclient .divdetailsduclient1
+{
+  display: flex;
+  justify-content: center;
+  background-color: #8693a6;
+  width: 80vw;
+  margin-left: 10vw;
+  margin-bottom: 1vh;
+}
+
+.boxdetailsclient .divdetailsduclient2
+{
+  display: flex;
+  justify-content: center;
+  background-color: #777d78;
+  width: 80vw;
+  margin-left: 10vw;
+  margin-bottom: 1vh;
+}
+
+.boxdetailsclient .divdetailsduclient p, .boxdetailsclient .divdetailsduclient1 p, .boxdetailsclient .divdetailsduclient2 p
+{
+  border: solid 1px;
+  margin: 0;
+  padding: 1vh 2vw;
+  width: 100vw;
+}
