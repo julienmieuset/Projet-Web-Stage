@@ -57,7 +57,7 @@ class Categorie
   public function setNumeroCategorie($numero)
   {
     if (filter_var($numero, FILTER_VALIDATE_INT)) {
-      $this->$numero_categorie = $numero;
+      $this->numero_categorie = $numero;
     }
   }
 

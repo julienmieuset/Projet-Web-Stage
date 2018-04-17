@@ -45,5 +45,21 @@ class CategorieDAO
     $requette->execute();
     return $requette->fetch()[0];
   }
+
+  public static function ajouter($categorie)
+  {
+    $baseDeDonnees = Connexion::getConnection();
+
+    $requette = $baseDeDonnees->prepare('INSERT INTO categorie (identifiant_categorie, nom_categorie, numero_categorie, id_client) VALUES (NULL, :nom, :numero, :id)');
+
+    $requette->bindValue(':nom', $categorie->getNomCategorie());
+    $requette->bindValue(':numero', $categorie->getNumeroCategorie());
+    $requette->bindValue(':id', $categorie->getIdClient());
+
+    if ($requette->execute()) {
+      return true;
+    }
+    return false;
+  }
 }
 ?>

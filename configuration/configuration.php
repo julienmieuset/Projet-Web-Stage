@@ -20,4 +20,5 @@ define("CONTROLEUR_CREATION_CLIENT", $_SERVER["DOCUMENT_ROOT"] . "/controleur/cr
 define("CONTROLEUR_DETAILS_CLIENT", $_SERVER["DOCUMENT_ROOT"] . "/controleur/detailsClient.php");
 define("CONTROLEUR_MODIFICATION_CLIENT", $_SERVER["DOCUMENT_ROOT"] . "/controleur/modifierClient.php");
 define("CONTROLEUR_MODIFICATION_DETAILS", $_SERVER["DOCUMENT_ROOT"] . "/controleur/modifierDetails.php");
+define("CONTROLEUR_AFFICHER_DETAILS", $_SERVER["DOCUMENT_ROOT"] . "/controleur/afficherDetails.php");
 ?>

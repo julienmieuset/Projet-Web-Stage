@@ -56,12 +56,14 @@ function ajouteClient(){
 		return false;
   }
 	$array = preg_split('/,/', $_POST["textetape"]);
-	for ($compteur = 0; $compteur <= count($array); $compteur++) {
+	for ($compteur = 0; $compteur <= count($array) - 1; $compteur++) {
 		$categorie = new Categorie();
 		$categorie->setNomCategorie($array[$compteur]);
 		$categorie->setNumeroCategorie($compteur + 1);
 		$categorie->setIdClient($_POST["textid"]);
-		// CategorieDAO::ajouter($etape);
+		if (!CategorieDAO::ajouter($categorie)) {
+			return false;
+		}
 	}
 	return true;
 }

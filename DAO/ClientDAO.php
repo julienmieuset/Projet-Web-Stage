@@ -138,5 +138,16 @@ class ClientDAO
     }
     return false;
   }
+
+  public static function rechercherNomParId($id)
+  {
+    $baseDeDonnees = Connexion::getConnection();
+
+    $requette = $baseDeDonnees->prepare('SELECT nom from client WHERE identifiant = :identifiant');
+    $requette->bindValue(':identifiant', $id);
+    $requette->execute();
+
+    return $requette->fetch()[0];
+  }
 }
 ?>

@@ -4,6 +4,7 @@ if (!isset($_SESSION['identifiant']))
   session_start();
 }
 require_once $_SERVER["DOCUMENT_ROOT"] . "/configuration/configuration.php";
+require_once DAO_CLIENT;
 require_once MODELE_CLIENT;
 require_once CONTROLEUR_AUTHENTIFICATION;
 ?>
@@ -36,16 +37,19 @@ function pretPourConnexion ()
   $client->setId($_POST["identifiant"]);
   $client->setMotDePasse($_POST["motDePasse"]);
 
+  $_SESSION['etapeClientAfficher'] = 1;
 	$_SESSION["identifiant"] = $client->getId();
 	$_SESSION["motDePasse"] = $client->getMotDePasse();
+  $_SESSION["nom"] = ClientDAO::rechercherNomParId($_SESSION["identifiant"]);
+  $_SESSION['clientModifier'] = ClientDAO::rechercherNomParId($_SESSION["identifiant"]);
 
   if ($_POST["identifiant"] == "Julien")
   {
-    echo "<script type='text/javascript'>document.location.replace('prive/index.php');</script>";
+    echo "<script type='text/javascript'>document.location.replace('prive/');</script>";
   }
   else
   {
-    echo "<script type='text/javascript'>document.location.replace('public/index.php');</script>";
+    echo "<script type='text/javascript'>document.location.replace('public/');</script>";
   }
 }
 ?>

@@ -65,5 +65,44 @@ class BoiteDAO
     }
     return false;
   }
+
+  public static function rechercherBoitesParEtape($numero_etape)
+  {
+    $listeBoite = array();
+    $baseDeDonnees = Connexion::getConnection();
+    $identifiant = ClientDAO::rechercherParNomExacte($_SESSION['clientModifier']);
+
+    $requette = $baseDeDonnees->prepare('SELECT * from boite WHERE id_client = :id_client AND numero_etape = :numero_etape');
+    $requette->bindValue(':id_client', $identifiant[0]['identifiant']);
+    $requette->bindValue(':numero_etape', $numero_etape);
+    $requette->execute();
+
+    foreach ($requette as $boite) {
+      array_push($listeBoite, $boite);
+    }
+    return $listeBoite ;
+  }
+
+  public static function rechercherPourcentage()
+  {
+    $listePourcentage = array();
+    $baseDeDonnees = Connexion::getConnection();
+    $identifiant = ClientDAO::rechercherParNomExacte($_SESSION['clientModifier']);
+
+    $requette = $baseDeDonnees->prepare('SELECT count(*) from boite WHERE id_client = :id_client');
+    $requette->bindValue(':id_client', $identifiant[0]['identifiant']);
+    // $requette->bindValue(':numero_etape', $numero_etape);
+    $requette->execute();
+    $nombreBoite = $requette->fetch()[0];
+
+    for ($compteur = 1; $compteur <= BoiteDAO::rechercherMaxEtape(); $compteur++) {
+      $requetteSpecifique = $baseDeDonnees->prepare('SELECT count(*) from boite WHERE id_client = :id_client AND numero_etape = :numero_etape');
+      $requetteSpecifique->bindValue(':id_client', $identifiant[0]['identifiant']);
+      $requetteSpecifique->bindValue(':numero_etape', $compteur);
+      $requetteSpecifique->execute();
+      array_push($listePourcentage, (($requetteSpecifique->fetch()[0])/$nombreBoite)*100);
+    }
+    return $listePourcentage;
+  }
 }
 ?>
