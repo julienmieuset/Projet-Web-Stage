@@ -104,5 +104,47 @@ class BoiteDAO
     }
     return $listePourcentage;
   }
+
+  public static function ajouter($boite)
+  {
+    $baseDeDonnees = Connexion::getConnection();
+
+    $requette = $baseDeDonnees->prepare('INSERT INTO boite (identifiant_boite, numero_client, numero_idnum, etape, numero_etape, id_client) VALUES (NULL, :numero_client, :numero_idnum, :etape, :numero_etape, :id_client)');
+
+    $requette->bindValue(':numero_client', $boite->getNumeroClient());
+    $requette->bindValue(':numero_idnum', $boite->getNumeroIdnum());
+    $requette->bindValue(':etape', $boite->getEtape());
+    $requette->bindValue(':numero_etape', $boite->getNumeroEtape());
+    $requette->bindValue(':id_client', $boite->getIdClient());
+
+    if ($requette->execute()) {
+      return true;
+    }
+    return false;
+  }
+
+  public static function rechercherParNumeroClient($num) {
+    $baseDeDonnees = Connexion::getConnection();
+    $identifiant = ClientDAO::rechercherParNomExacte($_SESSION['clientModifier']);
+
+    $requette = $baseDeDonnees->prepare('SELECT count(*) from boite WHERE id_client = :id_client AND numero_client = :numero_client');
+    $requette->bindValue(':id_client', $identifiant[0]['identifiant']);
+    $requette->bindValue(':numero_client', $num);
+    $requette->execute();
+
+    return $requette->fetch()[0];
+  }
+
+  public static function rechercherParNumeroIdnum($num) {
+    $baseDeDonnees = Connexion::getConnection();
+    $identifiant = ClientDAO::rechercherParNomExacte($_SESSION['clientModifier']);
+
+    $requette = $baseDeDonnees->prepare('SELECT count(*) from boite WHERE id_client = :id_client AND numero_idnum = :numero_idnum');
+    $requette->bindValue(':id_client', $identifiant[0]['identifiant']);
+    $requette->bindValue(':numero_idnum', $num);
+    $requette->execute();
+
+    return $requette->fetch()[0];
+  }
 }
 ?>

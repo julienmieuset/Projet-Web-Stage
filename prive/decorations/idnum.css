@@ -18,6 +18,11 @@ body
   padding-bottom: 18vh;
 }
 
+.bodycreationboiteclient
+{
+  padding-bottom: 18vh;
+}
+
 /* HEADER */
 .global-header
 {
@@ -210,7 +215,7 @@ body
 }
 
 /* DETAILSCLIENT */
-.boxdetailsclient #boutonquitterdetailclient, .boxdetailsclient #boutonmodifierclient, .boxdetailsclient #boutonenregistrer
+.boxdetailsclient #boutonquitterdetailclient, .boxdetailsclient #boutonmodifierclient, .boxdetailsclient #boutonenregistrer, .boxdetailsclient #boutonajouterboiteclient
 {
   background-color: #63859d;
   letter-spacing: 1px;
@@ -221,7 +226,7 @@ body
   transition: background-color 1s;
 }
 
-.boxdetailsclient #boutonquitterdetailclient:hover, .boxdetailsclient #boutonmodifierclient:hover, .boxdetailsclient #boutonenregistrer:hover
+.boxdetailsclient #boutonquitterdetailclient:hover, .boxdetailsclient #boutonmodifierclient:hover, .boxdetailsclient #boutonenregistrer:hover, .boxdetailsclient #boutonajouterboiteclient:hover
 {
   cursor:pointer;
   background-color: #dd0330;
@@ -268,4 +273,56 @@ body
   margin: 0;
   padding: 1vh 2vw;
   width: 100vw;
+}
+
+/* CREATIONBOITECLIENT */
+.divcreationboiteclient #boutonquitterajoutboiteclient, .divcreationboiteclient #boutongenerer, .divcreationboiteclient #boutonajouter
+{
+  background-color: #63859d;
+  letter-spacing: 1px;
+  border: none;
+  padding: 5px 10px;
+  font-family: "Dosis", sans-serif;
+  text-transform: uppercase;
+  transition: background-color 1s;
+}
+
+.divcreationboiteclient #boutonquitterajoutboiteclient:hover, .divcreationboiteclient #boutongenerer:hover, .divcreationboiteclient #boutonajouter:hover
+{
+  cursor:pointer;
+  background-color: #dd0330;
+}
+
+.divcreationboiteclient
+{
+  text-align: center;
+}
+
+.divcreationboiteclient .formulaireclient .pform
+{
+  margin-bottom: -1vh;
+}
+
+.divcreationboiteclient .formulaireclient #textnombre
+{
+  margin: 0;
+  padding: 0;
+}
+
+.divcreationboiteclient .formulaireprerempli .buttonmenu
+{
+  background-color: #63859d;
+  letter-spacing: 1px;
+  border: none;
+  margin-top: 3vh;
+  padding: 1vh;
+  width: 11vw;
+  font-family: "Dosis", sans-serif;
+  text-transform: uppercase;
+}
+
+.divcreationboiteclient .formulaireprerempli .textcli
+{
+  padding: 1vh;
+  width: 10vw;
 }

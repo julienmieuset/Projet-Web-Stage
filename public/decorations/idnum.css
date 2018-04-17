@@ -6,6 +6,7 @@ body
   position: relative;
   margin: auto;
   min-height: 100vh;
+  padding-bottom: 18vh;
 }
 
 /* HEADER */
@@ -118,6 +119,22 @@ body
   background-color: #c01340;
 }
 
+.boxaccueil .boitetrouve
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.boxaccueil #nomboite
+{
+  background-color: #7F8FA6;
+  width: 10vw;
+  padding: 1vh;
+  margin: 0;
+  margin-bottom: 2vh;
+}
+
 .boxaccueil .barreprogression, .boxaccueil .commentaireprogression {
   display: flex;
   flex-direction: row;
@@ -129,38 +146,38 @@ body
 }
 
 .jauge1 {
-  background-color: purple;
+  background-color: darkorchid;
   height:100%;
   width: 5vw;
 }
 
 .commentairejauge1
 {
-  color: purple;
+  color: darkorchid;
   width: 100%;
 }
 
 .jauge2 {
-  background-color: indigo;
+  background-color: #7B68EE;
   height:100%;
   width: 5vw;
 }
 
 .commentairejauge2
 {
-  color: indigo;
+  color: #7B68EE;
   width: 100%;
 }
 
 .jauge3 {
-  background-color: blue;
+  background-color: #1E90FF;
   height:100%;
   width: 5vw;
 }
 
 .commentairejauge3
 {
-  color: blue;
+  color: #1E90FF;
   width: 100%;
 }
 

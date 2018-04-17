@@ -25,11 +25,13 @@ $pourcentages = BoiteDAO::rechercherPourcentage();
       <div id="afficherbarre" class="barreprogression">
         <?php for ($compteur = 1; $compteur <= count($nombreEtape); $compteur++)
           {
+            if ($compteur <= sizeof($pourcentages)) {
           ?>
           <div id="afficherjauge" class="jauge<?php echo $compteur?>" style="width:<?php echo $pourcentages[$compteur - 1]?>%">
             <?php echo (int)$pourcentages[$compteur - 1]?>%
           </div>
           <?php
+          }
         }
         ?>
       </div>
@@ -63,11 +65,13 @@ $pourcentages = BoiteDAO::rechercherPourcentage();
         }
         ?>
       </div>
-      <?php foreach ($listeboiteCategorie as $boite) { ?>
-        <p><?php echo $boite['numero_client'] ?></p>
-      <?php
-      }
-      ?>
+      <div class="boitetrouve">
+        <?php foreach ($listeboiteCategorie as $boite) { ?>
+          <p id="nomboite"><?php echo $boite['numero_client'] ?></p>
+          <?php
+        }
+        ?>
+      </div>
 	  </div>
   </body>
   <?php include('footer.php'); ?>

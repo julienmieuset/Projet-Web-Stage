@@ -21,4 +21,5 @@ define("CONTROLEUR_DETAILS_CLIENT", $_SERVER["DOCUMENT_ROOT"] . "/controleur/det
 define("CONTROLEUR_MODIFICATION_CLIENT", $_SERVER["DOCUMENT_ROOT"] . "/controleur/modifierClient.php");
 define("CONTROLEUR_MODIFICATION_DETAILS", $_SERVER["DOCUMENT_ROOT"] . "/controleur/modifierDetails.php");
 define("CONTROLEUR_AFFICHER_DETAILS", $_SERVER["DOCUMENT_ROOT"] . "/controleur/afficherDetails.php");
+define("CONTROLEUR_CREATION_BOITE_CLIENT", $_SERVER["DOCUMENT_ROOT"] . "/controleur/ajouterBoiteClient.php");
 ?>

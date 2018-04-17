@@ -18,7 +18,10 @@ require_once CONTROLEUR_MODIFICATION_DETAILS;
     <div class="boxdetailsclient">
       <h1>Suivi en temps réel</h1>
       <h1><?php echo $_SESSION['clientModifier'] ?></h1>
-      <p><a href="modifierClient.php"><input type="button" id="boutonmodifierclient" value="<?php echo _("Modifier le client") ?>"/></a></p>
+      <p>
+        <a href="modifierClient.php"><input type="button" id="boutonmodifierclient" value="<?php echo _("Modifier le client") ?>"/></a>
+        <a href="ajouterBoiteClient.php"><input type="button" id="boutonajouterboiteclient" value="<?php echo _("Ajouter des boîtes") ?>"/></a>
+      </p>
       <form class="formdetailsclient" method="post">
         <div class="divdetailsduclient">
           <p>Numéro Client</p>
