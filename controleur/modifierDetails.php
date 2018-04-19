@@ -12,7 +12,6 @@ else {
 
 if ($essaiModification) {
 	modifierDetails();
-	// modificationDetailsRetroaction("succes");
 }
 
 function modifierDetails(){
@@ -22,8 +21,7 @@ function modifierDetails(){
   	$boite->setNumeroEtape($_POST['etapeboite'.$compteur]);
   	$boite->setEtape(CategorieDAO::rechercherParNumeroEtape($_POST['etapeboite'.$compteur]));
 		$boite->setIdClient(ClientDAO::rechercherParNomExacte($_SESSION['clientModifier'])[0]['identifiant']);
-		$boite->setNumeroClient($_POST['texthiddenidnumclient'.$compteur]);
-		$boite->setNumeroIdnum($_POST['texthiddenidnumidnum'.$compteur]);
+		$boite->setNumero($_POST['texthiddennumero'.$compteur]);
 		if (!BoiteDAO::modifier($boite)) {
     	return false;
   	}

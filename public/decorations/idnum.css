@@ -6,6 +6,10 @@ body
   position: relative;
   margin: auto;
   min-height: 100vh;
+}
+
+.bodyListeBoites
+{
   padding-bottom: 18vh;
 }
 
@@ -68,8 +72,8 @@ body
  font-family: "Dosis", sans-serif;
 }
 
-/* ACCUEIL */
-.boxaccueil
+/* LISTEBOITES */
+.boxlisteboite
 {
   text-align: center;
   display: flex;
@@ -77,7 +81,7 @@ body
   flex-wrap: wrap;
 }
 
-.menuaccueil
+.menulisteboite
 {
   display: flex;
   flex-direction: row;
@@ -85,7 +89,7 @@ body
   margin-left: 10vw;
 }
 
-.menuaccueil form
+.menulisteboite form
 {
   justify-content: center;
   width: 80vw;
@@ -93,7 +97,7 @@ body
   padding: 0;
 }
 
-.menuaccueil #formboutonetape, .menuaccueil #formboutonetapechecked
+.menulisteboite #formboutonetape, .menulisteboite #formboutonetapechecked
 {
   width: 100%;
   height: 6vh;
@@ -108,25 +112,25 @@ body
   transition: background-color 1s;
 }
 
-.menuaccueil #formboutonetape:hover, .menuaccueil #formboutonetapechecked:hover
+.menulisteboite #formboutonetape:hover, .menulisteboite #formboutonetapechecked:hover
 {
   cursor:pointer;
   background-color: #dd0330;
 }
 
-.menuaccueil #formboutonetapechecked
+.menulisteboite #formboutonetapechecked
 {
   background-color: #c01340;
 }
 
-.boxaccueil .boitetrouve
+.boxlisteboite .boitetrouve
 {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.boxaccueil #nomboite
+.boxlisteboite #nomboite
 {
   background-color: #7F8FA6;
   width: 10vw;
@@ -135,7 +139,7 @@ body
   margin-bottom: 2vh;
 }
 
-.boxaccueil .barreprogression, .boxaccueil .commentaireprogression {
+.boxlisteboite .barreprogression, .boxlisteboite .commentaireprogression {
   display: flex;
   flex-direction: row;
   margin-left: 30vw;
@@ -145,96 +149,192 @@ body
   min-height:30px;
 }
 
-.jauge1 {
+.jauge1, .jauge9 {
   background-color: darkorchid;
   height:100%;
   width: 5vw;
 }
 
-.commentairejauge1
+.commentairejauge1, .commentairejauge9
 {
   color: darkorchid;
   width: 100%;
 }
 
-.jauge2 {
+.jauge2, .jauge10 {
   background-color: #7B68EE;
   height:100%;
   width: 5vw;
 }
 
-.commentairejauge2
+.commentairejauge2, .commentairejauge10
 {
   color: #7B68EE;
   width: 100%;
 }
 
-.jauge3 {
+.jauge3, .jauge11 {
   background-color: #1E90FF;
   height:100%;
   width: 5vw;
 }
 
-.commentairejauge3
+.commentairejauge3, .commentairejauge11
 {
   color: #1E90FF;
   width: 100%;
 }
 
-.jauge4 {
+.jauge4, .jauge12 {
   background-color: green;
   height:100%;
   width: 5vw;
 }
 
-.commentairejauge4
+.commentairejauge4, .commentairejauge12
 {
   color: green;
   width: 100%;
 }
 
-.jauge5 {
+.jauge5, .jauge13 {
   background-color: yellow;
   height:100%;
   width: 5vw;
 }
 
-.commentairejauge5
+.commentairejauge5, .commentairejauge13
 {
   color: yellow;
   width: 100%;
 }
 
-.jauge6 {
+.jauge6, .jauge14 {
   background-color: orange;
   height:100%;
   width: 5vw;
 }
 
-.commentairejauge6
+.commentairejauge6, .commentairejauge14
 {
   color: orange;
   width: 100%;
 }
 
-.jauge7 {
+.jauge7, .jauge15 {
   background-color: red;
   height:100%;
 }
 
-.commentairejauge7
+.commentairejauge7, .commentairejauge15
 {
   color: red;
   width: 100%;
 }
 
-.jauge8 {
+.jauge8, .jauge16{
   background-color: pink;
   height:100%;
 }
 
-.commentairejauge8
+.commentairejauge8, .commentairejauge16
 {
   color: pink;
   width: 100%;
+}
+
+/* TABLEAUDEBORD */
+.boxtableaudebord
+{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.boxtableaudebord #boutonlistedesboites, .boxtableaudebord #boutonimprimerdesbarrecodes, .boxtableaudebord #boutonquelqueschiffres
+{
+  width: 30vw;
+  min-width: 200px;
+  height: 10vh;
+  margin: 0;
+  padding: 0;
+  background-color: #63859d;
+  letter-spacing: 1px;
+  border: solid 1px;
+  padding: 5px 10px;
+  font-family: "Dosis", sans-serif;
+  text-transform: uppercase;
+  transition: background-color 1s;
+}
+
+.boxtableaudebord #boutonlistedesboites:hover, .boxtableaudebord #boutonimprimerdesbarrecodes:hover, .boxtableaudebord #boutonquelqueschiffres:hover
+{
+  cursor:pointer;
+  background-color: #dd0330;
+}
+
+.boximprimer #boutonretourindex, .boxlisteboite #boutonretourindex, .boxdetailsclient #boutonretourindex
+{
+  width: 8vw;
+  min-width: 100px;
+  height: 4vh;
+  min-height: 20px;
+  margin: 0;
+  padding: 0;
+  background-color: #63859d;
+  letter-spacing: 1px;
+  border: solid 1px;
+  padding: 5px 10px;
+  font-family: "Dosis", sans-serif;
+  text-transform: uppercase;
+  transition: background-color 1s;
+}
+
+.boximprimer #boutonretourindex:hover, .boxlisteboite #boutonretourindex:hover, .boxdetailsclient #boutonretourindex:hover
+{
+  cursor:pointer;
+  background-color: #dd0330;
+}
+
+/* IMPRIMER */
+.boximprimer
+{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.boximprimer .formimprimer #formboutontelecharger
+{
+  width: 15vw;
+  min-width: 100px;
+  height: 4vh;
+  min-height: 20px;
+  margin: 0;
+  padding: 0;
+  margin-top: 3vh;
+  background-color: #63859d;
+  letter-spacing: 1px;
+  border: solid 1px;
+  padding: 5px 10px;
+  font-family: "Dosis", sans-serif;
+  text-transform: uppercase;
+  transition: background-color 1s;
+}
+
+.boximprimer .formimprimer #formboutontelecharger:hover
+{
+  cursor:pointer;
+  background-color: #dd0330;
+}
+
+/* DETAILSCLIENT */
+.boxdetailsclient
+{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }

@@ -103,16 +103,15 @@ class ClientDAO
   {
     $baseDeDonnees = Connexion::getConnection();
 
-    $requette = $baseDeDonnees->prepare('INSERT INTO client (identifiant, nom, motDePasse) VALUES (:identifiant, :nom, :motDePasse)');
-    $identifiant = $client->getId();
-    $nom = $client->getNom();
+    $requette = $baseDeDonnees->prepare('INSERT INTO client (identifiant, nom, motDePasse, prefixe, depart) VALUES (:identifiant, :nom, :motDePasse, :prefixe, :depart)');
     $salt = "JusTEUNeChaineDECARaTErePourRendRELEmdpPlusLONg";
     $motDePasse = hash('sha256', $salt.$client->getMotDePasse());
 
-    $requette->bindParam(':identifiant', $identifiant);
-    $requette->bindParam(':nom', $nom);
-    $requette->bindParam(':motDePasse', $motDePasse);
-
+    $requette->bindValue(':identifiant', $client->getId());
+    $requette->bindValue(':nom', $client->getNom());
+    $requette->bindValue(':motDePasse', $motDePasse);
+    $requette->bindValue(':prefixe', $client->getPrefixe());
+    $requette->bindValue(':depart', 0);
     if ($requette->execute()) {
       return true;
     }
@@ -122,9 +121,9 @@ class ClientDAO
   public static function modifier($client, $ancien)
   {
     $baseDeDonnees = Connexion::getConnection();
-    $requette = $baseDeDonnees->prepare('UPDATE client SET identifiant = :identifiant, nom = :nom, motDePasse = motDePasse  WHERE identifiant = :ancien');
+    $requette = $baseDeDonnees->prepare('UPDATE client SET identifiant = :identifiant, nom = :nom, motDePasse = motDePasse, prefixe = prefixe, depart = depart  WHERE identifiant = :ancien');
     if ($client->getMotDePasse() != 'identique') {
-      $requette = $baseDeDonnees->prepare('UPDATE client SET identifiant = :identifiant, nom = :nom, motDePasse = :motDePasse  WHERE identifiant = :ancien');
+      $requette = $baseDeDonnees->prepare('UPDATE client SET identifiant = :identifiant, nom = :nom, motDePasse = :motDePasse, prefixe = prefixe, depart = depart  WHERE identifiant = :ancien');
       $salt = "JusTEUNeChaineDECARaTErePourRendRELEmdpPlusLONg";
       $motDePasse = hash('sha256', $salt.$client->getMotDePasse());
       $requette->bindValue(':motDePasse', $motDePasse);
@@ -148,6 +147,41 @@ class ClientDAO
     $requette->execute();
 
     return $requette->fetch()[0];
+  }
+
+  public static function rechercherPrefixe($id)
+  {
+    $baseDeDonnees = Connexion::getConnection();
+
+    $requette = $baseDeDonnees->prepare('SELECT prefixe from client WHERE identifiant = :identifiant');
+    $requette->bindValue(':identifiant', $id);
+    $requette->execute();
+
+    return $requette->fetch()[0];
+  }
+
+  public static function rechercherDepart($id)
+  {
+    $baseDeDonnees = Connexion::getConnection();
+
+    $requette = $baseDeDonnees->prepare('SELECT depart from client WHERE identifiant = :identifiant');
+    $requette->bindValue(':identifiant', $id);
+    $requette->execute();
+
+    return $requette->fetch()[0];
+  }
+
+  public static function modifierDepart($id, $numero)
+  {
+    $baseDeDonnees = Connexion::getConnection();
+    $requette = $baseDeDonnees->prepare('UPDATE client SET identifiant = identifiant, nom = nom, motDePasse = motDePasse, prefixe = prefixe, depart = :depart  WHERE identifiant = :identifiant');
+    $requette->bindValue(':identifiant', $id);
+    $requette->bindValue(':depart', $numero);
+
+    if ($requette->execute()) {
+      return true;
+    }
+    return false;
   }
 }
 ?>

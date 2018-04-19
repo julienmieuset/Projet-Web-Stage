@@ -6,7 +6,8 @@ require_once MODELE_CLIENT;
 require_once MODELE_CATEGORIE;
 
 $essaiCreation = false;
-if (isset($_POST['textid']) and isset($_POST['textnom']) and isset($_POST['textmdp']) and isset($_POST['textmdp2']) and isset($_POST["textetape"])){
+if (isset($_POST['textid']) && isset($_POST['textnom']) && isset($_POST['textmdp']) && isset($_POST['textmdp2']) && isset($_POST["textetape"]) && isset($_POST["textpre"]) &&
+		strlen($_POST['textid']) > 0 && strlen($_POST['textnom']) > 0 && strlen($_POST['textmdp']) > 0 && strlen($_POST['textmdp2']) > 0 && strlen($_POST["textetape"]) > 0 && strlen($_POST["textpre"]) > 0){
 	$essaiCreation = true;
 }
 else {
@@ -52,6 +53,7 @@ function ajouteClient(){
   $client->setId($_POST["textid"]);
   $client->setNom($_POST["textnom"]);
   $client->setMotDePasse($_POST["textmdp"]);
+	$client->setPrefixe($_POST["textpre"]);
   if (!ClientDAO::ajouter($client)) {
 		return false;
   }

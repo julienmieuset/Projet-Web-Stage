@@ -12,7 +12,7 @@ class BoiteDAO
     $baseDeDonnees = Connexion::getConnection();
     $identifiant = ClientDAO::rechercherParNomExacte($_SESSION['clientModifier']);
 
-    $requette = $baseDeDonnees->prepare('SELECT * from boite WHERE id_client = :id_client ORDER by numero_idnum');
+    $requette = $baseDeDonnees->prepare('SELECT * from boite WHERE id_client = :id_client ORDER by numero');
     $requette->bindParam(':id_client', $identifiant[0]['identifiant']);
     $requette->execute();
 
@@ -53,9 +53,8 @@ class BoiteDAO
   {
     $baseDeDonnees = Connexion::getConnection();
 
-    $requette = $baseDeDonnees->prepare('UPDATE boite SET identifiant_boite = identifiant_boite, numero_client = :numero_client, numero_idnum = :numero_idnum, etape = :etape, numero_etape = :numero_etape, id_client = :id_client  WHERE numero_client = :numero_client AND numero_idnum = :numero_idnum');
-    $requette->bindValue(':numero_client', $boite->getNumeroClient());
-    $requette->bindValue(':numero_idnum', $boite->getNumeroIdnum());
+    $requette = $baseDeDonnees->prepare('UPDATE boite SET identifiant_boite = identifiant_boite, numero = :numero, etape = :etape, numero_etape = :numero_etape, pages = pages, id_client = id_client  WHERE numero = :numero AND id_client = :id_client');
+    $requette->bindValue(':numero', $boite->getNumero());
     $requette->bindValue(':etape', $boite->getEtape());
     $requette->bindValue(':numero_etape', $boite->getNumeroEtape());
     $requette->bindValue(':id_client', $boite->getIdClient());
@@ -91,7 +90,6 @@ class BoiteDAO
 
     $requette = $baseDeDonnees->prepare('SELECT count(*) from boite WHERE id_client = :id_client');
     $requette->bindValue(':id_client', $identifiant[0]['identifiant']);
-    // $requette->bindValue(':numero_etape', $numero_etape);
     $requette->execute();
     $nombreBoite = $requette->fetch()[0];
 
@@ -109,10 +107,9 @@ class BoiteDAO
   {
     $baseDeDonnees = Connexion::getConnection();
 
-    $requette = $baseDeDonnees->prepare('INSERT INTO boite (identifiant_boite, numero_client, numero_idnum, etape, numero_etape, id_client) VALUES (NULL, :numero_client, :numero_idnum, :etape, :numero_etape, :id_client)');
+    $requette = $baseDeDonnees->prepare('INSERT INTO boite (identifiant_boite, numero, etape, numero_etape, pages, id_client) VALUES (NULL, :numero, :etape, :numero_etape, 0, :id_client)');
 
-    $requette->bindValue(':numero_client', $boite->getNumeroClient());
-    $requette->bindValue(':numero_idnum', $boite->getNumeroIdnum());
+    $requette->bindValue(':numero', $boite->getNumero());
     $requette->bindValue(':etape', $boite->getEtape());
     $requette->bindValue(':numero_etape', $boite->getNumeroEtape());
     $requette->bindValue(':id_client', $boite->getIdClient());
@@ -123,25 +120,13 @@ class BoiteDAO
     return false;
   }
 
-  public static function rechercherParNumeroClient($num) {
+  public static function rechercherParNumero($num) {
     $baseDeDonnees = Connexion::getConnection();
     $identifiant = ClientDAO::rechercherParNomExacte($_SESSION['clientModifier']);
 
-    $requette = $baseDeDonnees->prepare('SELECT count(*) from boite WHERE id_client = :id_client AND numero_client = :numero_client');
+    $requette = $baseDeDonnees->prepare('SELECT count(*) from boite WHERE id_client = :id_client AND numero = :numero');
     $requette->bindValue(':id_client', $identifiant[0]['identifiant']);
-    $requette->bindValue(':numero_client', $num);
-    $requette->execute();
-
-    return $requette->fetch()[0];
-  }
-
-  public static function rechercherParNumeroIdnum($num) {
-    $baseDeDonnees = Connexion::getConnection();
-    $identifiant = ClientDAO::rechercherParNomExacte($_SESSION['clientModifier']);
-
-    $requette = $baseDeDonnees->prepare('SELECT count(*) from boite WHERE id_client = :id_client AND numero_idnum = :numero_idnum');
-    $requette->bindValue(':id_client', $identifiant[0]['identifiant']);
-    $requette->bindValue(':numero_idnum', $num);
+    $requette->bindValue(':numero', $num);
     $requette->execute();
 
     return $requette->fetch()[0];

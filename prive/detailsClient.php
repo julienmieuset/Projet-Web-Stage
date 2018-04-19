@@ -12,7 +12,7 @@ require_once CONTROLEUR_MODIFICATION_DETAILS;
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Idnum suivi - <?php echo _("Accueil") ?></title>
+		<title>Idnum suivi - <?php echo _("Details Client") ?></title>
 	  <?php include('header.php');?>
   <body class="bodydetailsclient">
     <div class="boxdetailsclient">
@@ -24,8 +24,7 @@ require_once CONTROLEUR_MODIFICATION_DETAILS;
       </p>
       <form class="formdetailsclient" method="post">
         <div class="divdetailsduclient">
-          <p>Numéro Client</p>
-          <p>Numéro Idnum</p>
+          <p>Numéro Boîte</p>
           <?php
           $listeEtape = BoiteDAO::rechercherEtapes();
           $listeBoite = BoiteDAO::rechercherParNom();
@@ -42,10 +41,8 @@ require_once CONTROLEUR_MODIFICATION_DETAILS;
           $compteur = $compteur + 1;
           ?>
           <div class="divdetailsduclient<?php echo ($compteur % 2 + 1) ?>">
-            <p><?php echo $boite['numero_client'] ?></p>
-            <p><?php echo $boite['numero_idnum'] ?></p>
-            <input type="hidden" class="barre" id="texthiddenidnum" name="texthiddenidnumclient<?php echo $compteur?>" value="<?php echo $boite['numero_client'] ?>">
-            <input type="hidden" class="barre" id="texthiddenidnum" name="texthiddenidnumidnum<?php echo $compteur?>" value="<?php echo $boite['numero_idnum'] ?>">
+            <p><?php echo $boite['numero'] ?></p>
+            <input type="hidden" class="barre" id="texthiddenidnum" name="texthiddennumero<?php echo $compteur?>" value="<?php echo $boite['numero'] ?>">
             <?php $compteurEtape = 1;
             foreach ($listeEtape as $etape) {
               if ($boite['numero_etape'] == $compteurEtape) {?>
@@ -73,17 +70,3 @@ require_once CONTROLEUR_MODIFICATION_DETAILS;
   </body>
   <?php include('footer.php'); ?>
 </html>
-
-<?php
-function modificationDetailsRetroaction ($actionRetroaction)
-{
-  if ($actionRetroaction = "succes")
-  {
-    echo "<script type='text/javascript'>document.location.replace('index.php');</script>";
-  }
-  elseif ($actionRetroaction = "error")
-  {
-    echo "<p class='error'> Erreur : Insertion dans la base de données échouée</p>";
-  }
-}
-?>

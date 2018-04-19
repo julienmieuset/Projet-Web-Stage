@@ -12,7 +12,7 @@ require_once CONTROLEUR_MODIFICATION_CLIENT;
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Idnum suivi - <?php echo _("Accueil") ?></title>
+		<title>Idnum suivi - <?php echo _("Modifier Client") ?></title>
 	  <?php include('header.php');?>
   <body>
     <div class="boxmodifierclient">

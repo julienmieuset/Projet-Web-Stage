@@ -4,10 +4,13 @@ class Client
   private $identifiant;
   private $nom;
   private $motDePasse;
+  private $prefixe;
+  private $depart;
 
   private $identifiantTemporaire;
   private $nomTemporaire;
   private $motDePasseTemporaire;
+  private $prefixeTemporaire;
 
   private $listeMessageErreur = [
     'id-long' => 'L\'identifiant ne doit pas excéder 30 caractères.',
@@ -21,10 +24,12 @@ class Client
 
   }
 
-  public function construireSecuritairement($identifiant, $nom, $motDePasse) {
+  public function construireSecuritairement($identifiant, $nom, $motDePasse, $prefixe, $depart) {
     $this->identifiant = $identifiant ;
     $this->nom = $nom ;
     $this->motDePasse = $motDePasse ;
+    $this->prefixe = $prefixe;
+    $this->depart = $depart;
   }
 
   // Liste des getters
@@ -41,6 +46,16 @@ class Client
   public function getMotDePasse()
   {
     return $this->motDePasse;
+  }
+
+  public function getPrefixe()
+  {
+    return $this->prefixe;
+  }
+
+  public function getDepart()
+  {
+    return $this->depart;
   }
 
   // Liste des setters
@@ -76,6 +91,13 @@ class Client
     }
   }
 
+  public function setDepart($depart)
+  {
+    if (filter_var($depart, FILTER_VALIDATE_INT)) {
+      $this->depart = $depart;
+    }
+  }
+
   public function setMotDePasse($motdepasse)
   {
     $motdepasseTemporaire = filter_var($motdepasse, FILTER_SANITIZE_STRING);
@@ -92,6 +114,22 @@ class Client
       }
     }
     return $listeErreurActivePourChamp;
+  }
+
+  public function setPrefixe($prefixe)
+  {
+    $prefixeTemporaire = filter_var($prefixe, FILTER_SANITIZE_STRING);
+    if (empty($prefixeTemporaire)) {
+      $this->listeMessageErreurActif['pre'][] = $this->listeMessageErreur['pre-vide'];
+    }
+    else {
+      if (strlen($prefixeTemporaire) > 20) {
+        $this->listeMessageErreurActif['pre'][] = $this->listeMessageErreur['pre-long'];
+      }
+      else {
+        $this->prefixe = $prefixeTemporaire;
+      }
+    }
   }
 }
 ?>

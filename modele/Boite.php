@@ -2,14 +2,13 @@
 class Boite
 {
   private $identifiant_boite;
-  private $numero_client;
-  private $numero_idnum;
+  private $numero;
   private $etape;
   private $numero_etape;
+  private $pages;
   private $id_client;
 
-  private $numero_clientTemporaire;
-  private $numero_idnumTemporaire;
+  private $numeroTemporaire;
   private $id_clientTemporaire;
   private $etapeTemporaire;
 
@@ -22,12 +21,12 @@ class Boite
 
 
   public function construireSecuritairement(
-    $identifiant_boite, $numero_client, $numero_idnum, $etape, $numero_etape, $id_client) {
+    $identifiant_boite, $numero, $etape, $numero_etape, $pages, $id_client) {
     $this->identifiant_boite = $identifiant_boite;
-    $this->numero_client = $numero_client;
-    $this->numero_idnum = $numero_idnum;
+    $this->numero = $numero;
     $this->etape = $etape;
     $this->numero_etape = $numero_etape;
+    $this->pages = $pages;
     $this->id_client = $id_client;
   }
 
@@ -37,14 +36,9 @@ class Boite
     return $this->identifiant_boite;
   }
 
-  public function getNumeroClient()
+  public function getNumero()
   {
-    return $this->numero_client;
-  }
-
-  public function getNumeroIdnum()
-  {
-    return $this->numero_idnum;
+    return $this->numero;
   }
 
   public function getEtape()
@@ -55,6 +49,11 @@ class Boite
   public function getNumeroEtape()
   {
     return $this->numero_etape;
+  }
+
+  public function getPages()
+  {
+    return $this->pages;
   }
 
   public function getIdClient()
@@ -70,34 +69,25 @@ class Boite
     }
   }
 
-  public function setNumeroClient($num)
+  public function setPages($pages)
   {
-    $numero_clientTemporaire = filter_var($num, FILTER_SANITIZE_STRING);
-    if (empty($numero_clientTemporaire)) {
-      $this->listeMessageErreurActif['numC'][] = $this->listeMessageErreur['numC-vide'];
-    }
-    else {
-      if (strlen($numero_clientTemporaire) > 20) {
-        $this->listeMessageErreurActif['numC'][] = $this->listeMessageErreur['numC-long'];
-      }
-      else {
-        $this->numero_client = $numero_clientTemporaire;
-      }
+    if (filter_var($pages, FILTER_VALIDATE_INT)) {
+      $this->pages = $pages;
     }
   }
 
-  public function setNumeroIdnum($num)
+  public function setNumero($num)
   {
-    $numero_idnumTemporaire = filter_var($num, FILTER_SANITIZE_STRING);
-    if (empty($numero_idnumTemporaire)) {
-      $this->listeMessageErreurActif['numI'][] = $this->listeMessageErreur['numI-vide'];
+    $numeroTemporaire = filter_var($num, FILTER_SANITIZE_STRING);
+    if (empty($numeroTemporaire)) {
+      $this->listeMessageErreurActif['num'][] = $this->listeMessageErreur['num-vide'];
     }
     else {
-      if (strlen($numero_idnumTemporaire) > 20) {
-        $this->listeMessageErreurActif['numI'][] = $this->listeMessageErreur['numI-long'];
+      if (strlen($numeroTemporaire) > 20) {
+        $this->listeMessageErreurActif['num'][] = $this->listeMessageErreur['num-long'];
       }
       else {
-        $this->numero_idnum = $numero_idnumTemporaire;
+        $this->numero = $numeroTemporaire;
       }
     }
   }

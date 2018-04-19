@@ -10,7 +10,7 @@ require_once CONTROLEUR_CREATION_BOITE_CLIENT;
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Idnum suivi - <?php echo _("Accueil") ?></title>
+		<title>Idnum suivi - <?php echo _("Ajouter Boites") ?></title>
 	  <?php include('header.php');?>
   <body class="bodycreationboiteclient">
     <div class="divcreationboiteclient">
@@ -28,14 +28,12 @@ require_once CONTROLEUR_CREATION_BOITE_CLIENT;
       <?php if (isset($_SESSION['nombre'])) { ?>
         <form method="post" class="formulaireprerempli">
           <p>
-            <input type="button" class="buttonmenu" value="<?php echo _("Numéro Client") ?>"/>
-            <input type="button" class="buttonmenu" value="<?php echo _("Numéro Idnum") ?>"/>
+            <input type="button" class="buttonmenu" value="<?php echo _("Numéro") ?>"/>
           </p>
             <input type="hidden" id="texthiddennombre" name="texthiddennombre" value="<?php echo $_SESSION['nombre'] ?>">
           <?php for ($compteur = 1; $compteur <= $_SESSION['nombre']; $compteur ++) { ?>
             <p>
-              <input type="text" class="textcli" style="text-transform: uppercase;" id="textnumeroclient<?php echo $compteur ?>" name="textnumeroclient<?php echo $compteur ?>" value="">
-              <input type="text" class="textcli" style="text-transform: uppercase;" id="textnumeroidnum<?php echo $compteur ?>" name="textnumeroidnum<?php echo $compteur ?>" value="<?php echo $_SESSION['lettre'].($_SESSION['chiffre'] + $compteur - 1) ?>">
+              <input type="text" class="textcli" style="text-transform: uppercase;" id="textnumero<?php echo $compteur ?>" name="textnumero<?php echo $compteur ?>" value="<?php echo $_SESSION['lettre'].($_SESSION['chiffre'] + $compteur - 1) ?>">
             </p>
           <?php
           }
