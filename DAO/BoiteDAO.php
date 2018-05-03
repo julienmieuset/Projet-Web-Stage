@@ -65,6 +65,17 @@ class BoiteDAO
     return false;
   }
 
+  public static function modifierNomEtape($id, $nom, $num)
+  {
+    $baseDeDonnees = Connexion::getConnection();
+
+    $requette = $baseDeDonnees->prepare('UPDATE boite SET etape = :etape  WHERE id_client = :id_client AND numero_etape = :numero_etape');
+    $requette->bindValue(':id_client', $id);
+    $requette->bindValue(':etape', $nom);
+    $requette->bindValue(':numero_etape', $num);
+    $requette->execute();
+  }
+
   public static function rechercherBoitesParEtape($numero_etape)
   {
     $listeBoite = array();
@@ -120,7 +131,8 @@ class BoiteDAO
     return false;
   }
 
-  public static function rechercherParNumero($num) {
+  public static function rechercherParNumero($num)
+  {
     $baseDeDonnees = Connexion::getConnection();
     $identifiant = ClientDAO::rechercherParNomExacte($_SESSION['clientModifier']);
 
@@ -130,6 +142,58 @@ class BoiteDAO
     $requette->execute();
 
     return $requette->fetch()[0];
+  }
+
+  public static function rechercherNombreBoite()
+  {
+    $baseDeDonnees = Connexion::getConnection();
+    $identifiant = ClientDAO::rechercherParNomExacte($_SESSION['clientModifier']);
+
+    $requette = $baseDeDonnees->prepare('SELECT count(*) from boite WHERE id_client = :id_client');
+    $requette->bindValue(':id_client', $identifiant[0]['identifiant']);
+    $requette->execute();
+
+    return $requette->fetch()[0];
+  }
+
+  public static function rechercherNombrePage()
+  {
+    $baseDeDonnees = Connexion::getConnection();
+    $identifiant = ClientDAO::rechercherParNomExacte($_SESSION['clientModifier']);
+
+    $requette = $baseDeDonnees->prepare('SELECT sum(pages) from boite WHERE id_client = :id_client');
+    $requette->bindValue(':id_client', $identifiant[0]['identifiant']);
+    $requette->execute();
+
+    return $requette->fetch()[0];
+  }
+
+  public static function supprimerBoite($id)
+  {
+    $baseDeDonnees = Connexion::getConnection();
+
+    $requette = $baseDeDonnees->prepare('DELETE FROM boite WHERE id_client = :id_client');
+    $requette->bindValue(':id_client', $id);
+    if ($requette->execute()) {
+      return true;
+    }
+    return false;
+  }
+
+  public static function modifierNombrePages($num, $pages)
+  {
+    $baseDeDonnees = Connexion::getConnection();
+    $identifiant = ClientDAO::rechercherParNomExacte($_SESSION['clientModifier']);
+
+    $requette = $baseDeDonnees->prepare('UPDATE boite SET pages = pages+:pages WHERE numero = :numero AND id_client = :id_client');
+    $requette->bindValue(':pages', $pages);
+    $requette->bindValue(':numero', $num);
+    $requette->bindValue(':id_client', $identifiant[0]['identifiant']);
+
+    if ($requette->execute()) {
+      return true;
+    }
+    return false;
   }
 }
 ?>

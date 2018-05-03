@@ -43,7 +43,7 @@ function pretPourConnexion ()
   $_SESSION["nom"] = ClientDAO::rechercherNomParId($_SESSION["identifiant"]);
   $_SESSION['clientModifier'] = ClientDAO::rechercherNomParId($_SESSION["identifiant"]);
 
-  if ($_POST["identifiant"] == "Julien")
+  if ($_POST["identifiant"] == "administrateur")
   {
     echo "<script type='text/javascript'>document.location.replace('prive/');</script>";
   }

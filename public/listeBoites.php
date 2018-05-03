@@ -65,9 +65,15 @@ $pourcentages = BoiteDAO::rechercherPourcentage();
         ?>
       </div>
       <div class="boitetrouve">
-        <?php foreach ($listeboiteCategorie as $boite) { ?>
+        <?php foreach ($listeboiteCategorie as $boite) {
+          if ($boite['pages'] > 0) { ?>
+            <p id="nomboite"><?php echo $boite['numero']." (images ".$boite['pages'].")" ?></p>
+          <?php
+          }
+          else { ?>
           <p id="nomboite"><?php echo $boite['numero'] ?></p>
           <?php
+          }
         }
         ?>
       </div>

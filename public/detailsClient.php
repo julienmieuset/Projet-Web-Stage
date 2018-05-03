@@ -4,6 +4,12 @@ if (!isset($_SESSION['identifiant']))
   session_start();
 }
 require_once $_SERVER["DOCUMENT_ROOT"] . "/configuration/configuration.php";
+require_once DAO_CATEGORIE;
+require_once DAO_BOITE;
+
+$nombreEtape = CategorieDAO::rechercherNombreEtape();
+$nombreBoite = BoiteDAO::rechercherNombreBoite();
+$nombrePage = BoiteDAO::rechercherNombrePage();
 ?>
 
 <!DOCTYPE HTML>
@@ -14,9 +20,10 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/configuration/configuration.php";
 	<body>
 		<div class="boxdetailsclient">
       <h1><?php echo _("Quelques chiffres vous concernant") ?></h1>
-      <p>nombre etapes</p>
-      <p>nombre boites</p>
-      <p>nombre pages</p>
+      <p>Total d'étapes : <?php echo $nombreEtape ?></p>
+      <p>Total de boîtes du client : <?php echo $nombreBoite ?></p>
+      <p>Total d'images traitées : <?php echo $nombrePage ?></p>
+      <p><a href="listeBoites.php"><input type="button" id="boutonsuivi" value="<?php echo _("suivi") ?>"/></a></p>
       <p><a href="index.php"><input type="button" id="boutonretourindex" value="<?php echo _("retour") ?>"/></a></p>
 	  </div>
   </body>

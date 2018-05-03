@@ -23,4 +23,7 @@ define("CONTROLEUR_MODIFICATION_DETAILS", $_SERVER["DOCUMENT_ROOT"] . "/controle
 define("CONTROLEUR_AFFICHER_DETAILS", $_SERVER["DOCUMENT_ROOT"] . "/controleur/afficherDetails.php");
 define("CONTROLEUR_CREATION_BOITE_CLIENT", $_SERVER["DOCUMENT_ROOT"] . "/controleur/ajouterBoiteClient.php");
 define("CONTROLEUR_IMPRESSION_CLIENT", $_SERVER["DOCUMENT_ROOT"] . "/controleur/imprimer.php");
+define("CONTROLEUR_SUPPRESSION_CLIENT", $_SERVER["DOCUMENT_ROOT"] . "/controleur/supprimerClient.php");
+define("CONTROLEUR_MODIFICATION_IMAGES", $_SERVER["DOCUMENT_ROOT"] . "/controleur/modifierImage.php");
+define("CONTROLEUR_ARCHIVAGE_CLIENT", $_SERVER["DOCUMENT_ROOT"] . "/controleur/archiverClient.php");
 ?>

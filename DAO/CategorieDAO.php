@@ -61,5 +61,29 @@ class CategorieDAO
     }
     return false;
   }
+
+  public static function supprimerCategorie($id)
+  {
+    $baseDeDonnees = Connexion::getConnection();
+
+    $requette = $baseDeDonnees->prepare('DELETE FROM categorie WHERE id_client = :id_client');
+    $requette->bindValue(':id_client', $id);
+    if ($requette->execute()) {
+      return true;
+    }
+    return false;
+  }
+
+  public static function modifier($id, $nom, $num)
+  {
+    $baseDeDonnees = Connexion::getConnection();
+
+    $requette = $baseDeDonnees->prepare('UPDATE categorie SET nom_categorie = :nom_categorie WHERE numero_categorie = :numero_categorie AND id_client = :id_client');
+    $requette->bindValue(':id_client', $id);
+    $requette->bindValue(':numero_categorie', $num);
+    $requette->bindValue(':nom_categorie', $nom);
+    $requette->execute();
+    return $requette->fetch()[0];
+  }
 }
 ?>

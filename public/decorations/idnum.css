@@ -133,7 +133,8 @@ body
 .boxlisteboite #nomboite
 {
   background-color: #7F8FA6;
-  width: 10vw;
+  width: 20vw;
+  min-width: 100px;
   padding: 1vh;
   margin: 0;
   margin-bottom: 2vh;
@@ -274,7 +275,7 @@ body
   background-color: #dd0330;
 }
 
-.boximprimer #boutonretourindex, .boxlisteboite #boutonretourindex, .boxdetailsclient #boutonretourindex
+.boximprimer #boutonretourindex, .boxlisteboite #boutonretourindex, .boxdetailsclient #boutonretourindex, .boxdetailsclient #boutonsuivi
 {
   width: 8vw;
   min-width: 100px;
@@ -291,7 +292,7 @@ body
   transition: background-color 1s;
 }
 
-.boximprimer #boutonretourindex:hover, .boxlisteboite #boutonretourindex:hover, .boxdetailsclient #boutonretourindex:hover
+.boximprimer #boutonretourindex:hover, .boxlisteboite #boutonretourindex:hover, .boxdetailsclient #boutonretourindex:hover, .boxdetailsclient #boutonsuivi:hover
 {
   cursor:pointer;
   background-color: #dd0330;

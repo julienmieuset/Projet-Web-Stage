@@ -38,8 +38,8 @@ if ($essaiGenerer) {
     BoiteDAO::ajouter($boite);
     QRcode::png(''.$prefixe.$nombrezero.$numero, '../barrecode/'.$prefixe.$nombrezero.$numero.'.png', QR_ECLEVEL_L, 10);
     $pdf->AddPage();
-    $pdf->Image('../barrecode/'.$prefixe.$nombrezero.$numero.'.png', 85, 85, 40);
-    $pdf->Text(99, 180, ''.$prefixe.$nombrezero.$numero);
+    $pdf->Image('../barrecode/'.$prefixe.$nombrezero.$numero.'.png', 86, 55, 40);
+    $pdf->Text(100, 120, ''.$prefixe.$nombrezero.$numero);
   }
   $pdf->output('D', 'ImprimerBarrecode.pdf');
   ClientDAO::modifierDepart($_SESSION['identifiant'], $numero);

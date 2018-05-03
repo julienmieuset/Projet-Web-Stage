@@ -1,5 +1,7 @@
 <?php
 require_once $_SERVER["DOCUMENT_ROOT"] . "/configuration/configuration.php";
+require_once DAO_BOITE;
+require_once DAO_CATEGORIE;
 
 class ClientDAO
 {
@@ -121,9 +123,9 @@ class ClientDAO
   public static function modifier($client, $ancien)
   {
     $baseDeDonnees = Connexion::getConnection();
-    $requette = $baseDeDonnees->prepare('UPDATE client SET identifiant = :identifiant, nom = :nom, motDePasse = motDePasse, prefixe = prefixe, depart = depart  WHERE identifiant = :ancien');
+    $requette = $baseDeDonnees->prepare('UPDATE client SET identifiant = :identifiant, nom = :nom, motDePasse = motDePasse, prefixe = :prefixe, depart = :depart  WHERE identifiant = :ancien');
     if ($client->getMotDePasse() != 'identique') {
-      $requette = $baseDeDonnees->prepare('UPDATE client SET identifiant = :identifiant, nom = :nom, motDePasse = :motDePasse, prefixe = prefixe, depart = depart  WHERE identifiant = :ancien');
+      $requette = $baseDeDonnees->prepare('UPDATE client SET identifiant = :identifiant, nom = :nom, motDePasse = :motDePasse, prefixe = :prefixe, depart = :depart  WHERE identifiant = :ancien');
       $salt = "JusTEUNeChaineDECARaTErePourRendRELEmdpPlusLONg";
       $motDePasse = hash('sha256', $salt.$client->getMotDePasse());
       $requette->bindValue(':motDePasse', $motDePasse);
@@ -131,6 +133,8 @@ class ClientDAO
     $requette->bindValue(':ancien', $ancien);
     $requette->bindValue(':identifiant', $client->getId());
     $requette->bindValue(':nom', $client->getNom());
+    $requette->bindValue(':prefixe', $client->getPrefixe());
+    $requette->bindValue(':depart', $client->getDepart());
 
     if ($requette->execute()) {
       return true;
@@ -182,6 +186,21 @@ class ClientDAO
       return true;
     }
     return false;
+  }
+
+  public static function supprimerClient($nom)
+  {
+    $baseDeDonnees = Connexion::getConnection();
+    $id = ClientDAO::rechercherParNomExacte($nom);
+    $id = $id[0]['identifiant'];
+    if (BoiteDAO::supprimerBoite($id)) {
+      if (CategorieDAO::supprimerCategorie($id)) {
+
+        $requette = $baseDeDonnees->prepare('DELETE FROM client WHERE identifiant = :id_client');
+        $requette->bindValue(':id_client', $id);
+        $requette->execute();
+      }
+    }
   }
 }
 ?>

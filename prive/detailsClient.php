@@ -7,6 +7,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/configuration/configuration.php";
 require_once DAO_BOITE;
 require_once DAO_CATEGORIE;
 require_once CONTROLEUR_MODIFICATION_DETAILS;
+require_once CONTROLEUR_ARCHIVAGE_CLIENT;
 ?>
 
 <!DOCTYPE HTML>
@@ -18,9 +19,19 @@ require_once CONTROLEUR_MODIFICATION_DETAILS;
     <div class="boxdetailsclient">
       <h1>Suivi en temps réel</h1>
       <h1><?php echo $_SESSION['clientModifier'] ?></h1>
+      <div class="listeboutonclient">
+        <p>
+          <a href="../controleur/supprimerClient.php"><input type="button" id="boutonsupprimerclient" value="<?php echo _("Supprimer le client") ?>"/></a>
+          <a href="modifierClient.php"><input type="button" id="boutonmodifierclient" value="<?php echo _("Modifier le client") ?>"/></a>
+        </p>
+        <form method="post">
+          <input type="hidden" class="barre" id="texthiddenarchive" name="texthiddenarchive" value="archive">
+          <p><a href="detailsClient.php"><input type="submit" id="boutonarchiverclient" value="<?php echo _("Archiver le client") ?>"/></a></p>
+        </form>
+      </div>
       <p>
-        <a href="modifierClient.php"><input type="button" id="boutonmodifierclient" value="<?php echo _("Modifier le client") ?>"/></a>
         <a href="ajouterBoiteClient.php"><input type="button" id="boutonajouterboiteclient" value="<?php echo _("Ajouter des boîtes") ?>"/></a>
+        <a href="modifierImage.php"><input type="button" id="boutonajouterimages" value="<?php echo _("Ajouter des images") ?>"/></a>
       </p>
       <form class="formdetailsclient" method="post">
         <div class="divdetailsduclient">
