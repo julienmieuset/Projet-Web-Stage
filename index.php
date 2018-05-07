@@ -23,6 +23,12 @@ require_once CONTROLEUR_AUTHENTIFICATION;
 				<p><input type="text" name="identifiant"></p>
 				<p><?php echo _("Mot de passe") ?></p>
 			  <p><input type="password" name="motDePasse"></p>
+        <?php if (isset($_SESSION['operationCourante'])) { ?>
+          <p class="pform" style="color : red; margin: -1vh 0;"><?php echo $_SESSION['operationCourante'] ?><p>
+        <?php
+        }
+        unset($_SESSION['operationCourante']);
+        ?>
         <p><input type="submit" name="actionFormulaire" id="submitconnexion" value="<?php echo _("Connexion")?>"></p>
 			</form>
 	  </div>
@@ -47,9 +53,6 @@ function pretPourConnexion ()
   {
     echo "<script type='text/javascript'>document.location.replace('prive/');</script>";
   }
-  else
-  {
-    echo "<script type='text/javascript'>document.location.replace('public/');</script>";
-  }
+  echo "<script type='text/javascript'>document.location.replace('public/');</script>";
 }
 ?>

@@ -11,27 +11,25 @@ else {
 }
 
 if ($essaiModification) {
-	$valueRetroaction = "";
 	$actionRetroaction = true;
   if ($_POST['textidmod'] != $_POST['texthiddenid']) {
 		if (ClientDAO::rechercherParId($_POST['textidmod'])) {
-			$valueRetroaction = "error-id";
+			$_SESSION['operationCourante'] = "Erreur car nouvel identifiant déjà utilisé ou incorrect";
 		 	$actionRetroaction = false;
 		}
 	}
 	if ($_POST['textnommod'] != $_POST['texthiddennom'] && $actionRetroaction) {
 		if (ClientDAO::rechercherNom($_POST['textnommod'])) {
-			$valueRetroaction = "error-nom";
+			$_SESSION['operationCourante'] = "Erreur car nouveau nom déjà utilisé ou incorrect";
 		 	$actionRetroaction = false;
 		}
 	}
 	if ($actionRetroaction) {
-		$valueRetroaction = "error-bd";
+		$_SESSION['operationCourante'] = "Erreur lors de la modification de la base de données";
 		if (modifierClient()) {
-			$valueRetroaction = "succes";
+			$_SESSION['operationCourante'] = "Modification reussies avec succes";
 		}
 	}
-	modificationClientRetroaction($valueRetroaction);
 }
 
 function modifierClient(){
@@ -41,7 +39,7 @@ function modifierClient(){
 		BoiteDAO::modifierNomEtape($_POST['texthiddenid'], $_POST['textcatmod'.$compteur], $compteur);
 	}
   $client = new Client() ;
-  $client->setId($_POST['textidmod']);
+  $client->setId($_POST['texthiddenid']);
   $client->setNom($_POST["textnommod"]);
   $client->setMotDePasse($_POST["textmdpmod"]);
 	$client->setPrefixe($_POST["textpremod"]);

@@ -31,6 +31,12 @@ $listeBoite = BoiteDAO::rechercherParNom();
           }
           ?>
         </select>
+        <?php if (isset($_SESSION['operationCourante'])) { ?>
+          <p class="pform" style="color : red;"><?php echo $_SESSION['operationCourante'] ?><p>
+        <?php
+        }
+        unset($_SESSION['operationCourante']);
+        ?>
         <p><input type="submit" class="button" value="<?php echo _("Supprimer") ?>" id="boutonsupprimer" name="boutonsupprimer"/></p>
       </form>
       <p><a href="detailsClient.php"><input type="button" id="boutonquittersupprimerboite" value="<?php echo _("Retour") ?>"/></a></p>

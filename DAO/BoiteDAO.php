@@ -180,6 +180,20 @@ class BoiteDAO
     return false;
   }
 
+  public static function supprimer($nom)
+  {
+    $baseDeDonnees = Connexion::getConnection();
+    $identifiant = ClientDAO::rechercherParNomExacte($_SESSION['clientModifier']);
+
+    $requette = $baseDeDonnees->prepare('DELETE FROM boite WHERE id_client = :id_client AND numero = :numero');
+    $requette->bindValue(':id_client', $identifiant[0]['identifiant']);
+    $requette->bindValue(':numero', $nom);
+    if ($requette->execute()) {
+      return true;
+    }
+    return false;
+  }
+
   public static function modifierNombrePages($num, $pages)
   {
     $baseDeDonnees = Connexion::getConnection();

@@ -56,6 +56,11 @@ $listeCategorie = CategorieDAO::rechercherNomsEtapes();
             <input type="hidden" class="barre" id="texthiddenmdp" name="texthiddenmdp" value="<?php echo $client['motDePasse'] ?>">
           <?php
           }
+          if (isset($_SESSION['operationCourante'])) { ?>
+            <p class="pform" style="color : red;"><?php echo $_SESSION['operationCourante'] ?><p>
+          <?php
+          }
+          unset($_SESSION['operationCourante']);
           ?>
           <p><input type="submit" class="button" value="<?php echo _("Enregistrer") ?>" id="boutonEnregistrer" name="boutonEnregistrer"/></p>
         </form>
@@ -64,26 +69,3 @@ $listeCategorie = CategorieDAO::rechercherNomsEtapes();
     </div>
   </body>
   <?php include('footer.php'); ?>
-</html>
-
-<?php
-function modificationClientRetroaction ($actionRetroaction)
-{
-  if ($actionRetroaction = "succes")
-  {
-    echo "<script type='text/javascript'>document.location.replace('index.php');</script>";
-  }
-  elseif ($actionRetroaction = "error-id")
-  {
-    echo "<p class='error'> Erreur : Nouvel identifiant déjà utilisé ou incorrect</p>";
-  }
-  elseif ($actionRetroaction = "error-nom")
-  {
-    echo "<p class='error'> Erreur : Nouveau nom déjà utilisé ou incorrect</p>";
-  }
-  elseif ($actionRetroaction = "error-bd")
-  {
-    echo "<p class='error'> Erreur  : Modification de la base de données</p>";
-  }
-}
-?>

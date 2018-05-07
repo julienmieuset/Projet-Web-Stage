@@ -18,19 +18,21 @@ $actionRetroaction = "";
 if ($essaiCreation) {
   $actionRetroaction = 'Creation-echec';
   if (!mdpEgaux()) {
-		$actionRetroaction = 'mdp-echec';
+		$_SESSION['operationCourante'] = "Erreur lors de la verification des mots de passes (taille >= 8)";
 	}
 	elseif (existe()) {
+		$_SESSION['operationCourante'] = " Erreur car identifiant deja utilise par un autre client";
 		$actionRetroaction = 'client-echec';
 	}
 	elseif (!ajouteClient()) {
+		$_SESSION['operationCourante'] = "Erreur lors de l'insertion dans la base de donnees";
 		$actionRetroaction = 'bdd-echec';
 	}
   else {
+		$_SESSION['operationCourante'] = "Client cree avec succes";
 		$actionRetroaction = 'Creation-succes';
   }
 }
-erreurCreationClient($actionRetroaction);
 
 function mdpEgaux(){
 	if ($_POST['textmdp'] == $_POST['textmdp2']) {

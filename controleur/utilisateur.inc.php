@@ -23,6 +23,7 @@ function connexion(){
 			return true;
 		}
 	}
+	$_SESSION['operationCourante'] = "Identifiant ou mot de passe incorrect";
 	return false;
 }
 ?>

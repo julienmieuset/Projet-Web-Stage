@@ -32,6 +32,12 @@ require_once CONTROLEUR_CREATION_CLIENT;
         <p><input type="text" class="barre" id="textmdp" name="textetape" placeholder="<?php echo _("Entrez les étapes du client...") ?>"></p>
         <p class="pform"><?php echo _("Préfixe pour les boîtes") ?> :</p>
         <p><input type="text" class="barre" id="textpre" name="textpre" placeholder="<?php echo _("Entrez le prefixe pour le nom des boites...") ?>"></p>
+        <?php if (isset($_SESSION['operationCourante'])) { ?>
+          <p class="pform" style="color : red;"><?php echo $_SESSION['operationCourante'] ?><p>
+        <?php
+        }
+        unset($_SESSION['operationCourante']);
+        ?>
         <p><input type="submit" class="bouton" id="submitcreationclient" value="<?php echo _("Créer") ?>"></p>
       </form>
       <p><a href="index.php"><input type="button" id="boutonquittercreerclient" value="<?php echo _("Retour") ?>"/></a></p>
@@ -39,21 +45,3 @@ require_once CONTROLEUR_CREATION_CLIENT;
   </body>
   <?php include('footer.php'); ?>
 </html>
-
-<?php
-function erreurCreationClient ($actionRetroaction)
-{
-  if ($actionRetroaction == "bdd-echec")
-  {
-    echo "<p class='error'> Erreur : Insertion dans la base de données</p>";
-  }
-  elseif ($actionRetroaction == "client-echec")
-  {
-    echo "<p class='error'> Erreur  : Identifiant déjà utilisé par un autre client</p>";
-  }
-  elseif ($actionRetroaction == "mdp-echec")
-  {
-    echo "<p class='error'> Erreur : Vérification des mots de passes (taille >= 8)</p>";
-  }
-}
-?>
