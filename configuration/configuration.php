@@ -26,4 +26,5 @@ define("CONTROLEUR_IMPRESSION_CLIENT", $_SERVER["DOCUMENT_ROOT"] . "/controleur/
 define("CONTROLEUR_SUPPRESSION_CLIENT", $_SERVER["DOCUMENT_ROOT"] . "/controleur/supprimerClient.php");
 define("CONTROLEUR_MODIFICATION_IMAGES", $_SERVER["DOCUMENT_ROOT"] . "/controleur/modifierImage.php");
 define("CONTROLEUR_ARCHIVAGE_CLIENT", $_SERVER["DOCUMENT_ROOT"] . "/controleur/archiverClient.php");
+define("CONTROLEUR_SUPPRESSION_BOITE", $_SERVER["DOCUMENT_ROOT"] . "/controleur/supprimerBoite.php");
 ?>

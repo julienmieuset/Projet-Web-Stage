@@ -25,10 +25,15 @@ body
 
 .bodymodificationclient
 {
-  padding-bottom: 4vh;
+  padding-bottom: 10vh;
 }
 
 .bodymodificationimages
+{
+  padding-bottom: 4vh;
+}
+
+.bodysupprimerboite
 {
   padding-bottom: 4vh;
 }
@@ -249,7 +254,7 @@ body
 }
 
 /* DETAILSCLIENT */
-.boxdetailsclient #boutonquitterdetailclient, .boxdetailsclient #boutonmodifierclient, .boxdetailsclient #boutonenregistrer, .boxdetailsclient #boutonajouterboiteclient, .boxdetailsclient #boutonsupprimerclient, .boxdetailsclient #boutonajouterimages, .boxdetailsclient #boutonarchiverclient
+.boxdetailsclient #boutonquitterdetailclient, .boxdetailsclient #boutonmodifierclient, .boxdetailsclient #boutonenregistrer, .boxdetailsclient #boutonajouterboiteclient, .boxdetailsclient #boutonsupprimerclient, .boxdetailsclient #boutonajouterimages, .boxdetailsclient #boutonarchiverclient, .boxdetailsclient #boutonsupprimerboiteclient
 {
   background-color: #63859d;
   letter-spacing: 1px;
@@ -260,7 +265,7 @@ body
   transition: background-color 1s;
 }
 
-.boxdetailsclient #boutonquitterdetailclient:hover, .boxdetailsclient #boutonmodifierclient:hover, .boxdetailsclient #boutonenregistrer:hover, .boxdetailsclient #boutonajouterboiteclient:hover, .boxdetailsclient #boutonsupprimerclient:hover, .boxdetailsclient #boutonajouterimages:hover, .boxdetailsclient #boutonarchiverclient:hover
+.boxdetailsclient #boutonquitterdetailclient:hover, .boxdetailsclient #boutonmodifierclient:hover, .boxdetailsclient #boutonenregistrer:hover, .boxdetailsclient #boutonajouterboiteclient:hover, .boxdetailsclient #boutonsupprimerclient:hover, .boxdetailsclient #boutonajouterimages:hover, .boxdetailsclient #boutonarchiverclient:hover, .boxdetailsclient #boutonsupprimerboiteclient:hover
 {
   cursor:pointer;
   background-color: #dd0330;
@@ -420,6 +425,42 @@ body
 }
 
 .boxajouterimage .barre
+{
+  margin-bottom: 1vh;
+}
+
+/* SUPPRIMERBOITECLIENT */
+.boxsupprimerboite
+{
+  text-align: center;
+}
+
+.boxsupprimerboite #boutonsupprimer, .boxsupprimerboite #boutonquittersupprimerboite
+{
+  background-color: #63859d;
+  letter-spacing: 1px;
+  border: none;
+  padding: 5px 10px;
+  font-family: "Dosis", sans-serif;
+  text-transform: uppercase;
+  transition: background-color 1s;
+}
+
+.boxsupprimerboite #boutonsupprimer:hover, .boxsupprimerboite #boutonquittersupprimerboite:hover
+{
+  cursor:pointer;
+  background-color: #dd0330;
+}
+
+.boxsupprimerboite select
+{
+  min-width: 80px;
+  width: 10vw;
+  min-height: 20px;
+  height: 3vh;
+}
+
+.boxsupprimerboite .barre
 {
   margin-bottom: 1vh;
 }

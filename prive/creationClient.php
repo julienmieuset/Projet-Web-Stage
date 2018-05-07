@@ -3,6 +3,10 @@ if (!isset($_SESSION['identifiant']))
 {
   session_start();
 }
+if (!isset($_SESSION['identifiant']))
+{
+  echo "<script type='text/javascript'>document.location.replace('../index.php');</script>";
+}
 require_once $_SERVER["DOCUMENT_ROOT"] . "/configuration/configuration.php";
 require_once CONTROLEUR_CREATION_CLIENT;
 ?>

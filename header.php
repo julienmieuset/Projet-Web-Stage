@@ -8,13 +8,13 @@
   <?php
     if (!empty($_SESSION['identifiant'])) { ?>
 			<p>
-				<a href="fonctions/deconnexion.php">Deconnexion</a>
+				<a href="fonctions/deconnexion.php"><?php echo _("Deconnexion") ?></a> | <a href="aide/aideClient.pdf" target="_blank">Aide</a>
 			</p>
     <?php
   }
     else { ?>
       <p>
-        <a href="index.php"><?php echo _("Connexion") ?></a>
+        <a href="index.php"><?php echo _("Connexion") ?></a> | <a href="aide/aideClient.pdf" target="_blank">Aide</a>
       </p>
     <?php  }
   	?>

@@ -3,6 +3,10 @@ if (!isset($_SESSION['identifiant']))
 {
   session_start();
 }
+if (!isset($_SESSION['identifiant']))
+{
+  echo "<script type='text/javascript'>document.location.replace('../index.php');</script>";
+}
 require_once $_SERVER["DOCUMENT_ROOT"] . "/configuration/configuration.php";
 require_once DAO_BOITE;
 require_once DAO_CATEGORIE;
@@ -21,8 +25,8 @@ require_once CONTROLEUR_ARCHIVAGE_CLIENT;
       <h1><?php echo $_SESSION['clientModifier'] ?></h1>
       <div class="listeboutonclient">
         <p>
-          <a href="../controleur/supprimerClient.php"><input type="button" id="boutonsupprimerclient" value="<?php echo _("Supprimer le client") ?>"/></a>
           <a href="modifierClient.php"><input type="button" id="boutonmodifierclient" value="<?php echo _("Modifier le client") ?>"/></a>
+          <a href="../controleur/supprimerClient.php"><input type="button" id="boutonsupprimerclient" value="<?php echo _("Supprimer le client") ?>"/></a>
         </p>
         <form method="post">
           <input type="hidden" class="barre" id="texthiddenarchive" name="texthiddenarchive" value="archive">
@@ -31,6 +35,7 @@ require_once CONTROLEUR_ARCHIVAGE_CLIENT;
       </div>
       <p>
         <a href="ajouterBoiteClient.php"><input type="button" id="boutonajouterboiteclient" value="<?php echo _("Ajouter des boîtes") ?>"/></a>
+        <a href="supprimerBoiteClient.php"><input type="button" id="boutonsupprimerboiteclient" value="<?php echo _("Supprimer des boîtes") ?>"/></a>
         <a href="modifierImage.php"><input type="button" id="boutonajouterimages" value="<?php echo _("Ajouter des images") ?>"/></a>
       </p>
       <form class="formdetailsclient" method="post">

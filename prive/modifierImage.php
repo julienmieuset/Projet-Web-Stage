@@ -3,6 +3,10 @@ if (!isset($_SESSION['identifiant']))
 {
   session_start();
 }
+if (!isset($_SESSION['identifiant']))
+{
+  echo "<script type='text/javascript'>document.location.replace('../index.php');</script>";
+}
 require_once $_SERVER["DOCUMENT_ROOT"] . "/configuration/configuration.php";
 require_once CONTROLEUR_MODIFICATION_IMAGES;
 require_once DAO_BOITE;
@@ -12,7 +16,7 @@ $listeBoite = BoiteDAO::rechercherParNom();
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Idnum suivi - <?php echo _("Modification du nombre d'images") ?></title>
+		<title>Idnum suivi - <?php echo _("Modifier images") ?></title>
 	  <?php include('header.php');?>
   <body class="bodymodificationimages">
     <div class="boxajouterimage">
