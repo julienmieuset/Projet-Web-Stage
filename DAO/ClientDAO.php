@@ -73,7 +73,7 @@ class ClientDAO
     $listeNom = array();
     $baseDeDonnees = Connexion::getConnection();
 
-    $requette = $baseDeDonnees->prepare('SELECT * from client WHERE nom == :nom');
+    $requette = $baseDeDonnees->prepare('SELECT * from client WHERE nom = :nom');
     $requette->bindParam(':nom', $recherche);
     $requette->execute();
 
@@ -90,7 +90,7 @@ class ClientDAO
     $listeNom = array();
     $baseDeDonnees = Connexion::getConnection();
 
-    $requette = $baseDeDonnees->prepare('SELECT * from client WHERE identifiant == :identifiant');
+    $requette = $baseDeDonnees->prepare('SELECT * from client WHERE identifiant = :identifiant');
     $requette->bindParam(':identifiant', $recherche);
     $requette->execute();
     $resultat = $requette->fetchAll();

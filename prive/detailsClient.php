@@ -60,19 +60,15 @@ require_once CONTROLEUR_ARCHIVAGE_CLIENT;
             <p><?php echo $boite['numero'] ?></p>
             <input type="hidden" class="barre" id="texthiddenidnum" name="texthiddennumero<?php echo $compteur?>" value="<?php echo $boite['numero'] ?>">
             <?php $compteurEtape = 1;
-            foreach ($listeEtape as $etape) {
-              if ($boite['numero_etape'] == $compteurEtape) {?>
+            foreach ($listeNomsEtapes as $etape) {
+              if ($boite['etape'] == $etape) {
+                ?>
                   <p><input type="radio" name="etapeboite<?php echo $compteur?>" value="<?php echo $compteurEtape?>" checked></p>
               <?php }
               else { ?>
                 <p><input type="radio" name="etapeboite<?php echo $compteur?>" value="<?php echo $compteurEtape?>"></p>
               <?php }
               $compteurEtape++;
-            }
-            while ($compteurEtape < $nombreEtape + 1) {?>
-              <p><input type="radio" name="etapeboite<?php echo $compteur?>" value="<?php echo $compteurEtape?>"></p>
-            <?php
-            $compteurEtape++;
             }
           ?>
           </div>

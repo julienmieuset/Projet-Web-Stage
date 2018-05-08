@@ -7,33 +7,23 @@ require_once MODELE_BOITE;
 
 $essaiAjout = false;
 $succes = true;
+$prefixe = ClientDAO::rechercherPrefixe(ClientDAO::rechercherParNomExacte($_SESSION['clientModifier'])[0]['identifiant']);
 
-if (isset($_POST['textnombre']) && isset($_POST['textchiffre']) && isset($_POST['textlettre']) && strlen($_POST['textchiffre']) > 0  && strlen($_POST['textlettre']) > 0) {
-  $_SESSION['nombre'] = $_POST['textnombre'];
-  $_SESSION['chiffre'] = $_POST['textchiffre'];
-  $_SESSION['lettre'] = $_POST['textlettre'];
-}
-elseif (isset($_POST['textnumero1'])) {
+if (isset($_POST['textchiffre']) && strlen($_POST['textchiffre']) > 0) {
   $essaiAjout = true;
-}
-else {
-  unset($_SESSION['nombre']);
-  unset($_SESSION['chiffre']);
-  unset($_SESSION['lettre']);
 }
 
 if ($essaiAjout) {
-  for ($compteur = 1; $compteur <= $_POST['texthiddennombre']; $compteur++) {
-    if (isset($_POST['textnumero'.$compteur]) && strlen($_POST['textnumero'.$compteur]) > 0) {
-      if (!numPresent($_POST['textnumero'.$compteur])) {
-        if(!$succes || !ajouterBoite($_POST['textnumero'.$compteur])) {
-          $succes = false;
-        }
-      }
+  if (!numPresent($prefixe.$_POST['textchiffre'])) {
+    if (ajouterBoite($prefixe.$_POST['textchiffre'])) {
+      $_SESSION['operationCourante'] = "Vous avez cree la boite ".$prefixe.$_POST['textchiffre'];
+    }
+    else {
+      $_SESSION['operationCourante'] = "Erreur lors de l'ajout dans la base de donnees";
     }
   }
-  if ($succes) {
-    echo "<script type='text/javascript'>document.location.replace('detailsClient.php');</script>";
+  else {
+    $_SESSION['operationCourante'] = "Erreur car ce numero de boite est deja attribue";
   }
 }
 

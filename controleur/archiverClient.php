@@ -55,6 +55,6 @@ if ($essaiArchiver) {
   $pdf->SetFont('Helvetica','B',12);
   $pdf->SetTextColor(128, 128, 128);
   $pdf->Text(110, 277, 'IDNUM TECHNOLOGIES');
-  $pdf->output('D', 'ARCHIVE.pdf');
+  $pdf->output('D', $_SESSION['clientModifier'].'.pdf');
 }
 ?>

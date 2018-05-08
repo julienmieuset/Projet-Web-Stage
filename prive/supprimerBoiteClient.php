@@ -25,7 +25,7 @@ $listeBoite = BoiteDAO::rechercherParNom();
       <form class="formsupprimerboite" method="post">
         <p class="pform"><?php echo _("Boite") ?> :</p>
         <select name="boiteclient" class="barre">
-          <?php for ($compteur = 1; $compteur < count($listeBoite); $compteur++) { ?>
+          <?php for ($compteur = 0; $compteur < count($listeBoite); $compteur++) { ?>
             <option value="<?php echo $listeBoite[$compteur]['numero'] ?>"><?php echo ($listeBoite[$compteur]['numero']) ?></option>';
           <?php
           }
