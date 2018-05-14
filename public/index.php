@@ -20,7 +20,7 @@ $_SESSION['clientModifier'] = $_SESSION['nom'];
 		<div class="boxtableaudebord">
       <h1><?php echo _("Tableau de bord") ?></h1>
       <p><a href="listeBoites.php"><input type="button" id="boutonlistedesboites" value="<?php echo _("Liste des boites") ?>"/></a></p>
-      <p><a href="imprimer.php"><input type="button" id="boutonimprimerdesbarrecodes" value="<?php echo _("Imprimer des barrecodes") ?>"/></a></p>
+      <p><a href="imprimer.php"><input type="button" id="boutonimprimerdesbarrecodes" value="<?php echo _("Imprimer des barres codes") ?>"/></a></p>
       <p><a href="detailsClient.php"><input type="button" id="boutonquelqueschiffres" value="<?php echo _("quelques chiffres") ?>"/></a></p>
 	  </div>
   </body>

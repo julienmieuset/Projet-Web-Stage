@@ -23,7 +23,7 @@ $nombrePage = BoiteDAO::rechercherNombrePage();
     <?php include('header.php');?>
 	<body>
 		<div class="boxdetailsclient">
-      <h1><?php echo _("Quelques chiffres vous concernant") ?></h1>
+      <h1><?php echo _("Quelques chiffres concernant votre production") ?></h1>
       <p>Total d'étapes : <?php echo $nombreEtape ?></p>
       <p>Total de boîtes du client : <?php echo $nombreBoite ?></p>
       <p>Total d'images traitées : <?php echo $nombrePage ?></p>

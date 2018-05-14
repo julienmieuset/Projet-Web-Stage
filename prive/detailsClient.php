@@ -12,6 +12,11 @@ require_once DAO_BOITE;
 require_once DAO_CATEGORIE;
 require_once CONTROLEUR_MODIFICATION_DETAILS;
 require_once CONTROLEUR_ARCHIVAGE_CLIENT;
+
+if (isset($_SESSION['suppression'])) {
+  $_SESSION['validationSuppression'] = 1;
+  unset($_SESSION['suppression']);
+}
 ?>
 
 <!DOCTYPE HTML>

@@ -39,6 +39,7 @@ if ($essaiGenerer) {
     QRcode::png(''.$prefixe.$nombrezero.$numero, '../barrecode/'.$prefixe.$nombrezero.$numero.'.png', QR_ECLEVEL_L, 10);
     $pdf->AddPage();
     $pdf->Image('../barrecode/'.$prefixe.$nombrezero.$numero.'.png', 86, 55, 40);
+    unlink('../barrecode/'.$prefixe.$nombrezero.$numero.'.png');
     $pdf->Text(100, 120, ''.$prefixe.$nombrezero.$numero);
   }
   $pdf->output('D', 'ImprimerBarrecode.pdf');

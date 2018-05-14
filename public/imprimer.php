@@ -18,11 +18,11 @@ require_once CONTROLEUR_IMPRESSION_CLIENT;
     <?php include('header.php');?>
 	<body>
 		<div class="boximprimer">
-      <h1><?php echo _("Aide pour imprimer ses Barrecodes") ?></h1>
-      <p><b><?php echo _("Grâce à cette page vous pourrez imprimer un Barrecode pour chaque boîte") ?></b></p>
+      <h1><?php echo _("Aide pour imprimer ses barres codes") ?></h1>
+      <p><b><?php echo _("Grâce à cette page vous pourrez imprimer un barre code pour chaque boîte à expédier") ?></b></p>
       <form class="formimprimer" method="post">
         <p><?php echo _("Combien de pages souhaitez-vous imprimer") ?> ?</p>
-        <p><input type="text" class="barre" id="textnombreimprimer" name="textnombreimprimer" placeholder="<?php echo _("Nombre de page...") ?>"></p>
+        <p><input type="text" class="barre" id="textnombreimprimer" name="textnombreimprimer" placeholder="<?php echo _("Nombre de boîtes...") ?>"></p>
         <p><input type="submit" class="button" id="formboutontelecharger" value="Télécharger le PDF"/></p>
       </form>
       <p><a href="index.php"><input type="button" id="boutonretourindex" value="<?php echo _("retour") ?>"/></a></p>
